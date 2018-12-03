@@ -19,8 +19,13 @@ public class UserPopulator implements ApplicationRunner{
 		UserInfo obj= new UserInfo();
 		obj.setUsername("Payal");
 		obj.setPassword("$2a$11$hmk0Liz1ql6Wihkd6/12Ke9c7TCfmSavzmAYbfM8X39I7csDBgHJO");
-		obj.setRoles(Arrays.asList("user","admin"));
+		obj.setAuthorities(Arrays.asList("ROLE_USER","ROLE_ADMIN"));
 		rep.save(obj);
+		UserInfo obj1= new UserInfo();
+		obj1.setUsername("Toya");
+		obj1.setPassword("$2a$11$LCiAk0xakTdond3P07mareqB1oDO271guiSwj2HmCdn/dhWf1lqkG");
+		obj1.setAuthorities(Arrays.asList("ROLE_USER"));
+		rep.save(obj1);
 	}
 
 }

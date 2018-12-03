@@ -15,7 +15,7 @@ public class UserInfo {
 	public String password;
 	public boolean enabled=true;
 	@ElementCollection(fetch=FetchType.EAGER)
-	public List<String> roles= new ArrayList<>();
+	public List<String> authorities= new ArrayList<>();
 	public String getUsername() {
 		return username;
 	}
@@ -28,10 +28,17 @@ public class UserInfo {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public List<String> getRoles() {
-		return roles;
+	public boolean isEnabled() {
+		return enabled;
 	}
-	public void setRoles(List<String> roles) {
-		this.roles = roles;
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
+	public List<String> getAuthorities() {
+		return authorities;
+	}
+	public void setAuthorities(List<String> authorities) {
+		this.authorities = authorities;
+	}
+	
 }

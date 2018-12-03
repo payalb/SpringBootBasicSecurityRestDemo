@@ -28,8 +28,11 @@ public class MyUserDetailsService implements UserDetailsService {
 			throw new RuntimeException("Invalid login details!!");
 		}
 		UserInfo user = userInfo.get();
+		for(String role: user.getAuthorities()) {
+			System.out.println(new SimpleGrantedAuthority(role));
+		}
 		return new User(user.getUsername(), user.getPassword(), true, true, true, true,
-				user.getRoles().stream().map(x -> new SimpleGrantedAuthority(x)).collect(Collectors.toList()));
+				user.getAuthorities().stream().map(x -> new SimpleGrantedAuthority(x)).collect(Collectors.toList()));
 	}
 
 }

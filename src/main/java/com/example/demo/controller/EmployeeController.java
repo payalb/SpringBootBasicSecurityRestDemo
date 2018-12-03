@@ -2,6 +2,8 @@ package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,7 +26,7 @@ public class EmployeeController {
         return employeeService.findByName(name);
     }
     
-
+    @PreAuthorize("hasRole(\"ADMIN\")")
     @PostMapping(consumes= MediaType.APPLICATION_JSON_VALUE)
     public Employee save(@RequestBody Employee emp) {
         return employeeService.save(emp);
